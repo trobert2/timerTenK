@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script src= "{{ url_for('static', filename='timerTenK.js') }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
+</head>
+
+<body>
+    <div ng-app="timerTenK" ng-init="existingUser={{existingUser}}">
+    <p>{[ existingUser ]}</p>
+
+    <b>Your user:</b>
+    <p>{[ existingUser.username ]}</p>
+        
+    <div ng-controller="firstController">
+        
+    <div class="left" >
+        <b>Your users skills:</b>
+        <form id="todo-form" ng-submit="addSkill()" method="post">
+            <input id="new-skill" placeholder="Want to add another skill?" ng-model="newSkill" autofocus>
+        </form>
+        <li ng-repeat="skill in getKeys(existingUser.skills)" > 
+            <a href="" ng-click="getSkill(skill, existingUser.skills)">{[skill]}</a>
+            <button class="destroy" ng-click="removeSkill(skill)" >remove</button>
+        </li>
+    </div>
+
+    
+        <div class="left"><center><H1>CLOCK GOES HERE!</H1></center></div>
+        
+        
+    <div class="left">
+        <b>ToDo's:</b>
+        <form id="todo-form" ng-submit="addTodo()" method="post" ng-show="visible">
+            <input id="new-todo" placeholder="What needs to be done?" ng-model="newTodo" autofocus>
+        </form>
+        <li ng-repeat="todo in skill_todo"> {[ todo ]} 
+            <button class="destroy" ng-click="removeTodo(todo)">remove</button>
+        </li>
+    </div>
+</div>
+    
+</div>
+</body>
+
+</html>

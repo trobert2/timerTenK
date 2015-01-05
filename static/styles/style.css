@@ -1,0 +1,29 @@
+body {
+    background-color: #999;
+    margin: 30;
+    padding: 30;
+}
+.right {
+    float: right;
+    width: 27%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 0 0 #e5e5e5;
+    margin: 0 0 2em 0;
+    padding: 3em;
+    font-weight: 200;
+    border: 0;
+}
+
+.left {
+    float: left;
+    width: 27%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 0 0 #e5e5e5;
+    margin-left: 30px;
+/*    margin: 0 0 2em 0;*/
+    padding: 1em;
+    font-weight: 200;
+    border: 0;
+}
