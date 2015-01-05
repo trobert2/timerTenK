@@ -64,7 +64,9 @@ app.controller('firstController', ['$scope', '$http', function ($scope, $http) {
       
         if (!newTodo) {
             return;
-        }
+        } else if ($scope.skill_todo.indexOf(newTodo) >= 0){
+            return;}
+      
         $scope.skill_todo.push(newTodo)
         
         $http({
@@ -95,6 +97,7 @@ app.controller('firstController', ['$scope', '$http', function ($scope, $http) {
             if ($scope.skill_in_use == skill){
                 $scope.skill_in_use = ''
                 $scope.skill_todo = ''
+                $scope.visible = false;
 
             }
                   }

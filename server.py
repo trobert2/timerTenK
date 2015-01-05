@@ -91,7 +91,8 @@ def add_skill_todo(username):
         
         for skill in user[u'skills']:
             if skill.keys()[0] == skill_in_use:
-                user[u'skills'][0][skill_in_use].append(new_todo)
+                user[u'skills'][user[u'skills'].index(skill)][skill_in_use].append(new_todo)
+                
                 collection.update({"username": str(username)}, {"$set": user}, upsert=False)
     return "aa"
 
@@ -107,7 +108,7 @@ def remove_skill_todo(username):
         
         for skill in user[u'skills']:
             if skill.keys()[0] == skill_in_use:
-                user[u'skills'][0][skill_in_use].remove(todo)
+                user[u'skills'][user[u'skills'].index(skill)][skill_in_use].remove(todo)
                 app.logger.info(user[u'skills'])
                 collection.update({"username": str(username)}, {"$set": user}, upsert=False)
     return "aa"
