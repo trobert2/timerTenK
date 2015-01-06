@@ -5,7 +5,18 @@
 <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
 <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
 <script src= "{{ url_for('static', filename='timerTenK.js') }}"></script>
+
+<!-- clock stuff -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+<script type="text/javascript" src="static/kinetic.js"></script> 
+<script type="text/javascript" src="static/jquery.final-countdown.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/bootstrap.min.css') }}">
+<link href="http://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet" type="text/css">
+
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
+
 </head>
 
 <body>
@@ -17,31 +28,95 @@
         
     <div ng-controller="firstController">
         
-    <div class="left" >
+    <div class="left col-md-4" >
         <b>Your users skills:</b>
         <form id="todo-form" ng-submit="addSkill()" method="post">
             <input id="new-skill" placeholder="Want to add another skill?" ng-model="newSkill" autofocus>
         </form>
         <li ng-repeat="skill in getKeys(existingUser.skills)" > 
-            <a href="" ng-click="getSkill(skill, existingUser.skills)">{[skill]}</a>
-            <button class="destroy" ng-click="removeSkill(skill)" >remove</button>
+            <a href="" ng-click="getSkill(skill, existingUser.skills)" class="list-text">{[skill]}</a>
+            <button class="btn btn-default btn-sm" ng-click="removeSkill(skill)" >remove</button>
         </li>
     </div>
 
-        <div class="left"><center><H1>CLOCK GOES HERE!</H1></center></div>
+    <div class="left col-md-4">
+        <div class="countdown countdown-container container">  
+            <div class="clock row">
+                <div class="clock-item clock-days countdown-time-value col-md-1">
+                    <!-- <div class="wrap"> -->
+                        <div class="inner">
+                            <div id="canvas-days" class="clock-canvas"></div>
+
+                            <div class="text">
+                                <p class="val">0</p>
+                                <p class="type-days type-time">DAYS</p>
+                            </div> 
+                        </div>
+                    <!-- </div> -->
+                </div>
+
+                <div class="clock-item clock-hours countdown-time-value col-md-1">
+                    <!-- <div class="wrap"> -->
+                        <div class="inner">
+                            <div id="canvas-hours" class="clock-canvas"></div>
+
+                            <div class="text">
+                                <p class="val">0</p>
+                                <p class="type-hours type-time">HOURS</p>
+                            </div><!-- /.text -->
+                        </div><!-- /.inner -->
+                    <!--</div> /.wrap -->
+                </div><!-- /.clock-item -->
+
+                <div class="clock-item clock-minutes countdown-time-value col-md-1">
+                    <!-- <div class="wrap"> -->
+                        <div class="inner">
+                            <div id="canvas-minutes" class="clock-canvas"></div>
+
+                            <div class="text">
+                                <p class="val">0</p>
+                                <p class="type-minutes type-time">MINUTES</p>
+                            </div><!-- /.text -->
+                        </div><!-- /.inner -->
+                    <!--</div> /.wrap -->
+                </div><!-- /.clock-item -->
+
+                <div class="clock-item clock-seconds countdown-time-value col-md-1">
+                    <!-- <div class="wrap"> -->
+                        <div class="inner">
+                            <div id="canvas-seconds" class="clock-canvas"></div>
+
+                            <div class="text">
+                                <p class="val">0</p>
+                                <p class="type-seconds type-time">SECONDS</p>
+                            </div><!-- /.text -->
+                        </div><!-- /.inner -->
+                   <!-- </div> /.wrap -->
+                </div><!-- /.clock-item -->
+            </div><!-- /.clock -->
+        </div><!-- /.countdown-wrapper -->
+            <br><br><br>
+    </div>
         
-    <div class="left">
+    <div class="left col-md-4">
         <b>ToDo's:</b>
         <form id="todo-form" ng-submit="addTodo()" method="post" ng-show="visible">
             <input id="new-todo" placeholder="What needs to be done?" ng-model="newTodo" autofocus>
         </form>
-        <li ng-repeat="todo in skill_todo"> {[ todo ]} 
-            <button class="destroy" ng-click="removeTodo(todo)">remove</button>
+        <li ng-repeat="todo in skill_todo">  <span class="list-text">{[ todo ]} </span>
+            <button class="btn btn-default btn-sm" ng-click="removeTodo(todo)">remove</button>
         </li>
     </div>
+
 </div>
-    
 </div>
+<script type="text/javascript">
+    $('.countdown').final_countdown({
+        'start': 1362139200,
+        'end': 1388461320,
+        'now': 1387461319
+    });
+</script>
 </body>
 
 </html>

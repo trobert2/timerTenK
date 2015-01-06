@@ -98,7 +98,6 @@ app.controller('firstController', ['$scope', '$http', function ($scope, $http) {
                 $scope.skill_in_use = ''
                 $scope.skill_todo = ''
                 $scope.visible = false;
-
             }
                   }
         }
